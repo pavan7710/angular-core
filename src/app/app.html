@@ -11,7 +11,6 @@
       <p *ngFor="let data of listAllTheCourse">{{data.description}}</p>
 </div> -->
 
-<!-- <pre>{{ listAllTheCourse | json}}</pre> -->
 <div *ngIf = "courses[0] as course">
 
 
@@ -24,15 +23,18 @@
             <app-course-image  [img] = "course.iconUrl"   *ngIf = "course.iconUrl" ></app-course-image>
       </app-course-card>
 </div>
-
 <div>
-      <p *ngFor = "let data of (beginnerCourses$ | async)">
-            {{data.category}}
-      </p>
 
-      <p *ngFor = "let data of (advanceCourses$ | async)" >
-            {{data.category}}
-      </p>
+      
+  
+
+      @for(data of beginnerCourses$ | async ; track  data.id ){
+            <p>{{data.category}}</p>
+      }
+
+      @for(data of advanceCourses$ | async ; track data.id ){
+            <p>{{data.category}}</p>
+      }
 </div>
 
 <router-outlet />
