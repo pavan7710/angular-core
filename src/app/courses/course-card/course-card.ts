@@ -1,5 +1,5 @@
 import { Component , EventEmitter, Input, OnInit, Output, TemplateRef } from '@angular/core';
-import { Course } from '../model/course'
+import { Course } from '../../model/course'
 import { CommonModule  } from '@angular/common'
 @Component({
   selector: 'app-course-card',
