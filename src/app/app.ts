@@ -10,7 +10,7 @@ import { Observable, pipe } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators'
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, CommonModule, CourseCard , CourseImage],
+  imports: [RouterOutlet, CommonModule, CourseCard],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

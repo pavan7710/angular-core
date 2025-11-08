@@ -1,53 +1,10 @@
-<p>Course card component works</p>
+@if(courses){
+    @for(data of courses ; track data.id){
+        <h4>{{data.description}}</h4>
 
-<!-- @for(item of course; track item.id ){
-    <img [src]="item.iconUrl" />
-    <p>{{item.description}}</p>
-    <p>{{item.longDescription}}</p>
+        <img [src] = "data.iconUrl"  src="alt" />
+        <h2>{{data.longDescription}}</h2>
 
-    <div style="display: flex; justify-content: space-evenly; margin-bottom: 1rem;" >
-         <div>
-         <button (click) = "editItem(item)" >Edit</button>
-    </div>
-
-    <div>
-        <button (click) = "viewItem(item)" >View</button>
-    </div>
-    </div>
-} -->
-
-
-@if(course){
-    <p>{{course.description}}</p> 
-    <p>{{course.longDescription}}</p>
-
-    <!-- <img [src]="course.iconUrl"  alt="no-image" *ngIf = "course.iconUrl ; else noImage" /> -->
-
-    <!-- <ng-template #noImage>
-        <p>No Image executing </p>
-    </ng-template> -->
-
-    <div style="display: flex; justify-content: space-evenly; margin-bottom: 1rem;" >
-         <div>
-         <button (click) = "editItem(course)" >Edit</button>
-    </div>
-
-    <div>
-        <button (click) = "viewItem(course)" >View</button>
-    </div>
-    </div>
-
-    <!-- <ng-content select="p" ></ng-content>
-
-    <ng-content select="h2" ></ng-content>
-
-    <ng-content select = ".by-class" ></ng-content> -->
-
-    <ng-template #noImage>
-        <ng-container *ngTemplateOutlet="noImageTpl; context : {description : course.description}">
-            
-        </ng-container>
-    </ng-template>
-
-    <ng-content select="app-course-image" *ngIf = "course.iconUrl; else noImage"></ng-content>
+        <button (click)="editCourse(data)" >Edit Course</button>
+    }
 }

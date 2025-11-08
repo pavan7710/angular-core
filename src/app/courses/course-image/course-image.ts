@@ -9,7 +9,7 @@ import { Component , Input, OnInit } from '@angular/core';
 export class CourseImage implements OnInit {
 
   @Input('img')
-  img!: string
+  img: string
 
   ngOnInit(): void {
       console.log(this.img)

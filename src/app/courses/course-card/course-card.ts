@@ -1,6 +1,7 @@
 import { Component , EventEmitter, Input, OnInit, Output, TemplateRef } from '@angular/core';
 import { Course } from '../../model/course'
 import { CommonModule  } from '@angular/common'
+import { Observable } from 'rxjs';
 @Component({
   selector: 'app-course-card',
   imports: [
@@ -10,23 +11,21 @@ import { CommonModule  } from '@angular/common'
   styleUrl: './course-card.css',
 })
 export class CourseCard implements OnInit {
-    @Input() course! : Course
+    @Input() courses: Course[] = [];
 
-    @Input() noImageTpl!: TemplateRef<any>
 
     @Output('courseSelected')
     courseEmitter = new EventEmitter<string>
 
 
     ngOnInit(): void {
-      console.log(this.course)
+      console.log(this.courses)
     }
 
-    editItem(item:Course){
-      
+ 
+    editCourse(data:Course){
+      console.log(data)
     }
 
-    viewItem(item:Course){
-      this.courseEmitter.emit("my name is pavan")
-    }
+ 
 }

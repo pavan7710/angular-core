@@ -11,26 +11,23 @@
       <p *ngFor="let data of listAllTheCourse">{{data.description}}</p>
 </div> -->
 
-<div *ngIf = "courses[0] as course">
 
+     <div>
+       <h1 style="color: green;" >
+            Beginner
+      </h1>
 
-       <ng-template #blankImage let-courseName="description" >
-            <p> {{courseName}} No Image ygget </p>
-      </ng-template>
+      <app-course-card    (courseSelected) = "onCourseSelected($event)"  [courses] = "beginnerCourses$ | async"></app-course-card>
 
+     </div>
 
-      <app-course-card  [noImageTpl] = "blankImage"  (courseSelected) = "onCourseSelected($event)"  [course] = "course">
-            <app-course-image  [img] = "course.iconUrl"   *ngIf = "course.iconUrl" ></app-course-image>
-      </app-course-card>
-</div>
-<div>
-      @for(data of beginnerCourses$ | async ; track  data.id ){
-            <p>{{data.category}}</p>
-      }
+     <div>
+            <h1 style="color: green;">
+                  Advance
+            </h1>
+            <app-course-card   (courseSelected) = "onCourseSelected($event)"  [courses] = "advanceCourses$ | async"></app-course-card>
 
-      @for(data of advanceCourses$ | async ; track data.id ){
-            <p>{{data.category}}</p>
-      }
-</div>
+     </div>
+
 
 <router-outlet />
