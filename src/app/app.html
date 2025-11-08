@@ -24,10 +24,6 @@
       </app-course-card>
 </div>
 <div>
-
-      
-  
-
       @for(data of beginnerCourses$ | async ; track  data.id ){
             <p>{{data.category}}</p>
       }
