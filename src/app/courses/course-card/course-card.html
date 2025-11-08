@@ -1,10 +1,13 @@
 @if(courses){
     @for(data of courses ; track data.id){
         <h4>{{data.description}}</h4>
-
         <img [src] = "data.iconUrl"  src="alt" />
         <h2>{{data.longDescription}}</h2>
-
-        <button (click)="editCourse(data)" >Edit Course</button>
+        <button (click)="editCourse$.next(data)" >Edit Course</button>
     }
 }
+<div  *ngIf = "editCourse$ | async as selectedCourse"  class="modal-backdrop">
+      <div class="modal-content">
+        <app-coursedialog [selectedCourse] = "selectedCourse"  (close) = "onDialogClose($event)" ></app-coursedialog>
+      </div>
+</div>
