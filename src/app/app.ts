@@ -5,6 +5,7 @@ import { COURSES } from '../db'
 import { CourseCard } from "./courses/course-card/course-card";
 import { Course } from './model/course'
 import { CourseImage } from './courses/course-image/course-image'
+import {  CoursesService } from './courses/courses-services'
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet, CommonModule, CourseCard , CourseImage],
@@ -14,10 +15,14 @@ import { CourseImage } from './courses/course-image/course-image'
 export class App implements OnInit {
   protected readonly title = signal('coreConcept');
 
+  constructor(private Courses:CoursesService){
+
+  }
+
   courses = COURSES
 
   ngOnInit(): void {
-    
+      console.log(this.Courses.courseList().subscribe())
   }
 
   @ViewChild(CourseCard)
