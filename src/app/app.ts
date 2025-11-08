@@ -6,6 +6,8 @@ import { CourseCard } from "./courses/course-card/course-card";
 import { Course } from './model/course'
 import { CourseImage } from './courses/course-image/course-image'
 import {  CoursesService } from './courses/courses-services'
+import { Observable, pipe } from 'rxjs';
+import { map, shareReplay } from 'rxjs/operators'
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet, CommonModule, CourseCard , CourseImage],
@@ -15,14 +17,19 @@ import {  CoursesService } from './courses/courses-services'
 export class App implements OnInit {
   protected readonly title = signal('coreConcept');
 
-  constructor(private Courses:CoursesService){
+  constructor(private CoursesService:CoursesService){
 
   }
 
   courses = COURSES
 
+  beginnerCourses$ : Observable<Course[]>
+  advanceCourses$ : Observable<Course[]>
+
+  listAllTheCourse!:Course[]
+
   ngOnInit(): void {
-      console.log(this.Courses.courseList().subscribe())
+    this.loadCourse()
   }
 
   @ViewChild(CourseCard)
@@ -34,6 +41,18 @@ export class App implements OnInit {
       console.log(course)
       this.message = course
       console.log(this.card)
+  }
+
+  loadCourse(){
+    const courses$ = this.CoursesService.courseList()
+    this .beginnerCourses$ = courses$.pipe(
+      map(course => course.filter(data => data.category ==='BEGINNER'))
+    )
+
+    this.advanceCourses$ = courses$.pipe(
+      map(course => course.filter(data => data.category === 'ADVANCED')),
+    )
+
   }
 
 }
