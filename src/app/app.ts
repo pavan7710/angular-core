@@ -37,10 +37,8 @@ export class App implements OnInit {
 
   message!: string
 
-  onCourseSelected(course:string){
-      console.log(course)
-      this.message = course
-      console.log(this.card)
+  onCourseSelected(){
+    this.loadCourse()
   }
 
   loadCourse(){

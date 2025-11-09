@@ -16,7 +16,7 @@ import { Coursedialog } from '../coursedialog/coursedialog'
 export class CourseCard implements OnInit {
     @Input() courses: Course[] = [];
     @Output('courseSelected')
-    courseEmitter = new EventEmitter<string>
+    courseSelected = new EventEmitter<Course>
 
     editCourse$ = new BehaviorSubject<any | null >(null)
 
@@ -24,9 +24,17 @@ export class CourseCard implements OnInit {
       console.log(this.courses)
     }
 
+    viewCourse(data:Course){
+      
+    }
+
     onDialogClose(data:any){
       console.log(data)
       this.editCourse$.next(data)
+    }
+
+    onSave(data:string){
+      this.courseSelected.emit()
     }
  
 

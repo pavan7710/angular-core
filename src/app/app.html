@@ -17,7 +17,7 @@
             Beginner
       </h1>
 
-      <app-course-card    (courseSelected) = "onCourseSelected($event)"  [courses] = "beginnerCourses$ | async"></app-course-card>
+      <app-course-card    (courseSelected) = "onCourseSelected()"  [courses] = "beginnerCourses$ | async"></app-course-card>
 
      </div>
 
@@ -25,7 +25,7 @@
             <h1 style="color: green;">
                   Advance
             </h1>
-            <app-course-card   (courseSelected) = "onCourseSelected($event)"  [courses] = "advanceCourses$ | async"></app-course-card>
+            <app-course-card   (courseSelected) = "onCourseSelected()"  [courses] = "advanceCourses$ | async"></app-course-card>
 
      </div>
 

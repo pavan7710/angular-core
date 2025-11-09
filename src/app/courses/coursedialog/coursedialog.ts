@@ -14,6 +14,7 @@ export class Coursedialog implements OnInit {
   }
 
   @Output() close = new EventEmitter<any>()
+  @Output() save = new EventEmitter<any>()
   @Input() selectedCourse:Course
 
   onCancle(){
@@ -21,5 +22,9 @@ export class Coursedialog implements OnInit {
   }
   onBackdropClick(){
     this.close.emit(null)
+  }
+
+  saveCouese(){
+    this.save.emit("200")
   }
 }

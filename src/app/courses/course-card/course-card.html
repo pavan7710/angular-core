@@ -4,10 +4,11 @@
         <img [src] = "data.iconUrl"  src="alt" />
         <h2>{{data.longDescription}}</h2>
         <button (click)="editCourse$.next(data)" >Edit Course</button>
+        <button (click) = "viewCourse(data)" >View Course</button>
     }
 }
 <div  *ngIf = "editCourse$ | async as selectedCourse"  class="modal-backdrop">
       <div class="modal-content">
-        <app-coursedialog [selectedCourse] = "selectedCourse"  (close) = "onDialogClose($event)" ></app-coursedialog>
+        <app-coursedialog (save) = "onSave($event)" [selectedCourse] = "selectedCourse"  (close) = "onDialogClose($event)" ></app-coursedialog>
       </div>
 </div>
