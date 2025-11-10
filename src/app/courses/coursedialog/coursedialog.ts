@@ -27,15 +27,15 @@ export class Coursedialog implements OnInit {
   }
 
   onSave(){
-      this.CousesService.saveCourse(this.selectedCourse.id,this.form.value).subscribe()
-      this.close.emit(null)
-      this.save.emit()
+      this.CousesService.saveCourse(this.selectedCourse.id,this.form.value).subscribe(
+        res => {
+          this.save.emit()
+          this.onCancle()
+        }
+      )
   }
 
   onCancle(){
-    this.close.emit(null)
-  }
-  onBackdropClick(){
     this.close.emit(null)
   }
 

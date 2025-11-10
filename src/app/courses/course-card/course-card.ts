@@ -28,12 +28,11 @@ export class CourseCard implements OnInit {
     }
 
     onDialogClose(data:any){
-      this.editCourse$.next(data)
+      this.editCourse$.next(null)
     }
 
     onSave(data:string){
       this.courseSelected.emit()
-      this.editCourse$.next(null)
     }
  
 
