@@ -21,20 +21,19 @@ export class CourseCard implements OnInit {
     editCourse$ = new BehaviorSubject<any | null >(null)
 
     ngOnInit(): void {
-      console.log(this.courses)
     }
 
     viewCourse(data:Course){
-      
+
     }
 
     onDialogClose(data:any){
-      console.log(data)
       this.editCourse$.next(data)
     }
 
     onSave(data:string){
       this.courseSelected.emit()
+      this.editCourse$.next(null)
     }
  
 

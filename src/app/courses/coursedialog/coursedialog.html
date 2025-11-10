@@ -1,8 +1,16 @@
-<div>
     <div>
-        <p>coursedialog works!</p>
-        <p>{{selectedCourse.description}}</p>
-        <button (click) = "saveCouese()" >Save</button>
-        <button (click) = "onCancle()" >Close</button>
+        <h1>{{selectedCourse.description}}</h1>
+
+        <form [formGroup]="form" (ngSubmit)="onSave()" >
+            <label>Course Name
+                <input formControlName = 'description' />
+            </label>
+
+            <div>
+                <button type = "submit"  >Save</button>
+                <button (click) = "onCancle()" >Close</button>
+            </div>
+
+        </form>
+
     </div>
-</div>

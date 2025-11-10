@@ -12,7 +12,7 @@ export class CourseImage implements OnInit {
   img: string
 
   ngOnInit(): void {
-      console.log(this.img)
+    
   }
 
 }

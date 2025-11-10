@@ -21,12 +21,15 @@ export class CoursesService {
   //     )
   // }
 
-    courseList(): Observable<Course[]> {
-      return this.http.get<{ payload: Course[] }>('/api/courses').pipe(
-        map(
-          res => res['payload']
-        ),
-        shareReplay()
-      )
+  courseList(): Observable<Course[]> {
+    return this.http.get<Course[]>('/api/courses').pipe(
+      map(
+        res => res['payload']
+      ),
+      shareReplay()
+    )
+  }
+  saveCourse(id:string, data:Course) : Observable<any> {
+    return this.http.put<any>(`/api/courses/${id}` , data)
   }
 }
