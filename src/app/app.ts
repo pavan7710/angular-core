@@ -7,17 +7,20 @@ import { Course } from './model/course'
 import { CourseImage } from './courses/course-image/course-image'
 import {  CoursesService } from './courses/courses-services'
 import { Observable, pipe } from 'rxjs';
-import { map, shareReplay } from 'rxjs/operators'
+import { finalize, map, shareReplay } from 'rxjs/operators'
+import { Loading } from './shared/loading/loading';
+import { LoadingService  } from './shared/loading/loading-service';
+
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, CommonModule, CourseCard],
+  imports: [RouterOutlet, CommonModule, CourseCard , Loading],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
 export class App implements OnInit {
   protected readonly title = signal('coreConcept');
 
-  constructor(private CoursesService:CoursesService){
+  constructor(private CoursesService:CoursesService , private LoadingService : LoadingService ){
 
   }
 
@@ -42,7 +45,10 @@ export class App implements OnInit {
   }
 
   loadCourse(){
-    const courses$ = this.CoursesService.courseList()
+    this.LoadingService.loadingOn()
+    const courses$ = this.CoursesService.courseList().pipe(
+      finalize(() => this.LoadingService.loadingOff())
+    )
     this .beginnerCourses$ = courses$.pipe(
       map(course => course.filter(data => data.category ==='BEGINNER'))
     )
