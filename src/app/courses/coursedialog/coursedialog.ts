@@ -7,7 +7,7 @@ import { LoadingService  } from '../../shared/loading/loading-service'
 import { Loading } from "../../shared/loading/loading";
 @Component({
   selector: 'app-coursedialog',
-  imports: [ReactiveFormsModule, CommonModule, Loading],
+  imports: [ReactiveFormsModule, CommonModule,Loading],
   templateUrl: './coursedialog.html',
   styleUrl: './coursedialog.css',
 })

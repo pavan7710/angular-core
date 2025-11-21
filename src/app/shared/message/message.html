@@ -1,1 +1,12 @@
-<p>message works!</p>
+
+
+<ng-container *ngIf = "(errors$ | async ) as errors" >
+    <div class="" *ngIf = "showMessages">
+        <div class="message" *ngFor = "let error of errors">
+            {{error}}
+        </div>
+        <button class="close" (click) = "onClose()">
+            Close
+        </button>
+    </div>
+</ng-container>
