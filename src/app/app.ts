@@ -55,7 +55,7 @@ export class App implements OnInit {
       finalize(() => this.LoadingService.loadingOff()),
       catchError(err => {
         const message = "Could not load courses";
-        this.messageService.showErrors([message]);
+        this.messageService.showErrors(message);
         console.log(message , err);
         return throwError(err);
       })
